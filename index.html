@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Devi Andreny — Motion Portfolio</title>
+<meta name="description" content="Portofolio motion design Devi Andreny: sample motion bertema PT Asuransi Kredit Indonesia (Askrindo).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1F44;--ink:#040C1E;--blue:#1E5BD8;--sky:#7FB2FF;--orange:#F37021;--white:#F4F7FC;--mute:rgba(244,247,252,.62);--pad:clamp(20px,4vw,56px);--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:'Public Sans',system-ui,sans-serif;background:var(--ink);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,footer{position:relative;z-index:2}
+
+#loader{position:fixed;inset:0;z-index:100;background:var(--ink);display:flex;flex-direction:column;justify-content:space-between;padding:var(--pad)}
+#loader .big{font-size:clamp(56px,14vw,220px);font-weight:800;letter-spacing:-.04em;line-height:.85}
+#loader .big span{color:var(--orange)}
+#loader .row{display:flex;justify-content:space-between;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+#loader .bar{height:2px;background:rgba(255,255,255,.12);margin:14px 0}
+#loader .bar i{display:block;height:100%;width:0;background:var(--orange)}
+
+.cursor{position:fixed;left:0;top:0;width:14px;height:14px;border-radius:50%;background:var(--orange);z-index:200;pointer-events:none;mix-blend-mode:screen;transform:translate(-50%,-50%);transition:width .3s,height .3s}
+.cursor.big{width:76px;height:76px}
+.cursor::after{content:attr(data-t);position:absolute;inset:0;display:grid;place-items:center;font-size:12px;font-weight:600;color:#fff;letter-spacing:.06em}
+@media (hover:none){.cursor{display:none}}
+
+header{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:22px var(--pad);z-index:50;mix-blend-mode:difference}
+.logo{font-weight:800;font-size:19px;letter-spacing:.01em}.logo b{color:var(--orange)}
+nav{display:flex;gap:clamp(14px,2.5vw,36px);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+nav a{opacity:.8;transition:opacity .3s}nav a:hover{opacity:1}
+@media(max-width:600px){nav a:nth-child(1){display:none}}
+
+section{position:relative}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);font-weight:600}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--pad);padding-bottom:calc(var(--pad)*1.3)}
+.hero h1{font-size:clamp(50px,11.5vw,190px);line-height:.9;letter-spacing:-.045em;font-weight:800}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln>span{display:block}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero .meta{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:clamp(24px,4vw,48px);flex-wrap:wrap}
+.hero .meta p{max-width:430px;color:var(--mute);line-height:1.6;font-size:15px}
+.scrollhint{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.scrollhint i{width:1px;height:46px;background:linear-gradient(var(--orange),transparent);display:block;animation:drip 1.8s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+.statement{padding:26vh var(--pad);min-height:100svh;display:flex;align-items:center}
+.statement p{font-size:clamp(28px,5vw,80px);line-height:1.1;letter-spacing:-.03em;font-weight:500;max-width:1350px}
+.statement .w{opacity:.14;display:inline-block}
+.statement .w.hl{color:var(--orange)}
+
+/* karya */
+.work{height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.work .head{padding:0 var(--pad);display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5vh}
+.work h2{font-size:clamp(34px,5.6vw,90px);letter-spacing:-.04em;line-height:.95}
+.track{display:flex;gap:clamp(16px,2vw,30px);padding:0 var(--pad);width:max-content}
+.card{width:clamp(300px,38vw,580px);cursor:pointer;display:block}
+.pv{position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;background:#0d2a5c;border:1px solid rgba(127,178,255,.2);transition:border-color .4s,transform .6s var(--ease)}
+.pv iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;opacity:0;transition:opacity .8s}
+.pv iframe.on{opacity:1}
+.card:hover .pv{border-color:var(--orange);transform:translateY(-6px)}
+.card .cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:16px 4px 0}
+.card .cap h3{font-size:clamp(18px,1.8vw,26px);letter-spacing:-.02em}
+.card .cap small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);white-space:nowrap}
+.card .cap p{font-size:14px;color:var(--mute);margin-top:4px}
+.card.more .pv{display:grid;place-items:center;background:var(--orange);border-color:var(--orange);font-size:clamp(24px,3vw,44px);font-weight:800;letter-spacing:-.03em;text-align:center;padding:20px}
+
+.tools{padding:14vh var(--pad);display:grid;grid-template-columns:1fr 1.4fr;gap:6vw;border-top:1px solid rgba(255,255,255,.1)}
+.tools h2{font-size:clamp(34px,5vw,80px);letter-spacing:-.04em;line-height:.95}
+.tools p{color:var(--mute);line-height:1.7;font-size:17px;max-width:560px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chips span{font-size:13px;padding:9px 16px;border:1px solid rgba(127,178,255,.3);border-radius:999px;transition:all .3s}
+.chips span:hover{background:var(--orange);border-color:var(--orange)}
+@media(max-width:800px){.tools{grid-template-columns:1fr}}
+
+.marq{overflow:hidden;white-space:nowrap;padding:5vh 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1)}
+.marq div{display:inline-block;font-size:clamp(44px,8vw,130px);font-weight:800;letter-spacing:-.04em;will-change:transform}
+.marq span{margin:0 .35em;-webkit-text-stroke:1.5px rgba(244,247,252,.55);color:transparent}
+.marq span.f{color:var(--orange);-webkit-text-stroke:0}
+
+footer{padding:20vh var(--pad) var(--pad);min-height:100svh;display:flex;flex-direction:column;justify-content:space-between}
+footer h2{font-size:clamp(46px,10.5vw,176px);letter-spacing:-.05em;line-height:.9;font-weight:800}
+footer h2 em{font-style:normal;color:var(--orange)}
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:18px 30px;border-radius:999px;background:var(--orange);color:#fff;font-weight:600;letter-spacing:.04em;transition:box-shadow .4s}
+.btn.o{background:transparent;border:1px solid rgba(255,255,255,.35)}
+.btn:hover{box-shadow:0 0 60px rgba(243,112,33,.5)}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:12vh;color:var(--mute);font-size:13px}
+
+/* modal */
+#modal{position:fixed;inset:0;z-index:150;background:rgba(4,12,30,.92);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:4vw}
+#modal.open{display:flex}
+#modal .box{width:min(1200px,100%);aspect-ratio:16/9;max-height:84vh;border-radius:20px;overflow:hidden;background:#000;position:relative;transform:scale(.94);opacity:0;transition:all .5s var(--ease)}
+#modal.open .box{transform:none;opacity:1}
+#modal iframe{width:100%;height:100%;border:0}
+#modal button{position:absolute;top:16px;right:20px;z-index:2;background:#fff;color:var(--navy);border:0;border-radius:999px;padding:10px 18px;font:600 13px 'Public Sans',sans-serif;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="row"><span>Motion Portfolio</span><span id="pct">0%</span></div>
+  <div class="big">DEVI<br>ANDRENY<span>.</span></div>
+  <div><div class="bar"><i id="barfill"></i></div><div class="row"><span>Memuat karya</span><span>2026</span></div></div>
+</div>
+<div class="cursor" id="cursor"></div>
+<canvas id="gl"></canvas>
+
+<header>
+  <a href="#top" class="logo">Devi <b>Andreny</b></a>
+  <nav><a href="#karya">Karya</a><a href="#tentang">Tentang</a><a href="#kontak">Kontak</a></nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="eyebrow" style="margin-bottom:3vh">Motion Portfolio · 2026</div>
+    <h1>
+      <span class="ln"><span>Motion yang</span></span>
+      <span class="ln"><span><em>menggerakkan</em></span></span>
+      <span class="ln"><span>pesan.</span></span>
+    </h1>
+    <div class="meta">
+      <p>Devi Andreny. Sample motion design untuk komunikasi korporat, dibuat dengan tema PT Asuransi Kredit Indonesia (Askrindo).</p>
+      <div class="scrollhint"><i></i>Scroll</div>
+    </div>
+  </section>
+
+  <section class="statement" id="tentang">
+    <p id="stmt">Gerak bukan hiasan. Ia membuat angka lebih mudah dipahami, proses lebih mudah diikuti, dan pesan perusahaan lebih mudah diingat. Setiap sample di sini adalah eksperimen kecil untuk itu.</p>
+  </section>
+
+  <section class="work" id="karya">
+    <div class="head">
+      <div><div class="eyebrow">Karya</div><h2>Enam sample motion</h2></div>
+      <div class="eyebrow" style="opacity:.7">Geser · Klik untuk membuka →</div>
+    </div>
+    <div class="track" id="track"></div>
+  </section>
+
+  <section class="tools">
+    <div><div class="eyebrow">Teknik</div><h2 style="margin-top:14px">Ringan,<br>tanpa beban.</h2></div>
+    <div>
+      <p>Sebagian besar sample dibuat dengan HTML, CSS, dan JavaScript murni sehingga cepat dibuka di perangkat apa pun. Animasi menghormati pengaturan "kurangi gerakan" pada perangkat pengguna.</p>
+      <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>SVG</span><span>Canvas 2D</span><span>WebGL</span><span>GSAP</span></div>
+    </div>
+  </section>
+
+  <div class="marq"><div id="mq"><span class="f">Motion</span><span>Design</span><span class="f">Devi Andreny</span><span>2026</span><span class="f">Motion</span><span>Design</span><span class="f">Devi Andreny</span><span>2026</span></div></div>
+</main>
+
+<footer id="kontak">
+  <div>
+    <div class="eyebrow" style="margin-bottom:3vh">Kontak</div>
+    <h2>Mari <em>bergerak</em><br>bersama.</h2>
+    <div class="btns">
+      <!-- GANTI href di bawah dengan alamat LinkedIn Anda -->
+      <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener" id="mag">LinkedIn <span>↗</span></a>
+      <a class="btn o" href="samples.html">Galeri lengkap <span>→</span></a>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 Devi Andreny</span><span>Sample konsep bertema Askrindo, bukan materi resmi perusahaan.</span></div>
+</footer>
+
+<div id="modal"><div class="box"><button id="close">Tutup ✕</button><iframe id="mframe" title="Pratinjau karya"></iframe></div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const touch=matchMedia('(hover:none)').matches;
+const $=(s,r=document)=>r.querySelector(s);
+gsap.registerPlugin(ScrollTrigger);
+
+/* smooth scroll */
+let lenis=null;
+if(!reduce&&window.Lenis){
+  lenis=new Lenis({lerp:.1});
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const t=$(a.getAttribute('href'));if(!t)return;e.preventDefault();
+  lenis?lenis.scrollTo(t):t.scrollIntoView({behavior:'smooth'});
+}));
+
+/* WebGL particles */
+const canvas=$('#gl'),mouse={x:0,y:0,sx:0,sy:0},state={morph:0,target:0};
+let renderer,scene,camera,points,uniforms,glOK=true;
+try{
+  renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+  renderer.setSize(innerWidth,innerHeight);
+  scene=new THREE.Scene();
+  camera=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.1,100);camera.position.z=6;
+  const N=innerWidth<700?5000:11000;
+  const pos=new Float32Array(N*3),tgt=new Float32Array(N*3),rnd=new Float32Array(N);
+  for(let i=0;i<N;i++){
+    const p=Math.acos(1-2*(i+.5)/N),t=Math.PI*(1+Math.sqrt(5))*(i+.5),r=2.1+(Math.random()-.5)*.18;
+    pos[i*3]=r*Math.sin(p)*Math.cos(t);pos[i*3+1]=r*Math.cos(p);pos[i*3+2]=r*Math.sin(p)*Math.sin(t);
+    const x=(Math.random()-.5)*13,z=(Math.random()-.5)*7;
+    tgt[i*3]=x;tgt[i*3+1]=Math.sin(x*.9)*Math.cos(z*1.1)*.7-1.3;tgt[i*3+2]=z;rnd[i]=Math.random();
+  }
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  g.setAttribute('aTarget',new THREE.BufferAttribute(tgt,3));
+  g.setAttribute('aRand',new THREE.BufferAttribute(rnd,1));
+  uniforms={uTime:{value:0},uMorph:{value:0},uMouse:{value:new THREE.Vector2(99,99)},uPx:{value:renderer.getPixelRatio()}};
+  points=new THREE.Points(g,new THREE.ShaderMaterial({
+    uniforms,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+    vertexShader:`attribute vec3 aTarget;attribute float aRand;uniform float uTime,uMorph,uPx;uniform vec2 uMouse;varying float vMix;varying float vA;
+      void main(){vec3 p=mix(position,aTarget,uMorph);float tt=uTime*.6+aRand*6.28;
+        p+=.09*vec3(sin(p.y*2.6+tt),cos(p.x*2.6+tt),sin(p.z*2.6+tt*.8));p.y+=sin(p.x*.9+uTime*.7)*.25*uMorph;
+        vec4 mv=modelViewMatrix*vec4(p,1.);vec2 d=mv.xy-uMouse;float f=exp(-dot(d,d)*.9);mv.xy+=normalize(d+1e-4)*f*.85;
+        vMix=clamp(f*1.6+step(.93,aRand)*.9+uMorph*.12,0.,1.);vA=.35+.65*aRand;
+        gl_Position=projectionMatrix*mv;gl_PointSize=uPx*(1.4+2.2*aRand+f*3.)*(5./-mv.z);}`,
+    fragmentShader:`varying float vMix;varying float vA;
+      void main(){vec2 c=gl_PointCoord-.5;float d=length(c);if(d>.5)discard;float a=smoothstep(.5,0.,d)*vA;
+        vec3 blue=mix(vec3(.12,.36,.85),vec3(.5,.7,1.),vA);gl_FragColor=vec4(mix(blue,vec3(.95,.44,.13),vMix),a*.9);}`
+  }));
+  scene.add(points);
+}catch(e){glOK=false;canvas.style.display='none'}
+addEventListener('pointermove',e=>{mouse.x=e.clientX/innerWidth*2-1;mouse.y=-(e.clientY/innerHeight*2-1)});
+addEventListener('resize',()=>{if(!glOK)return;renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix()});
+const halfH=Math.tan(25*Math.PI/180)*6,clock=new THREE.Clock();
+let glVisible=true;
+document.addEventListener('visibilitychange',()=>glVisible=!document.hidden);
+(function frame(){
+  if(glOK&&glVisible){
+    const t=clock.getElapsedTime();
+    mouse.sx+=(mouse.x-mouse.sx)*.08;mouse.sy+=(mouse.y-mouse.sy)*.08;
+    state.morph+=(state.target-state.morph)*.05;
+    uniforms.uTime.value=reduce?0:t;uniforms.uMorph.value=state.morph;
+    uniforms.uMouse.value.set(mouse.sx*halfH*camera.aspect,mouse.sy*halfH);
+    const prog=Math.min(scrollY/(ScrollTrigger.maxScroll(window)||1),1);
+    points.rotation.y=t*.08+mouse.sx*.35+prog*2.2;points.rotation.x=mouse.sy*.15+state.morph*.5;
+    points.position.x=(1-state.morph)*(innerWidth>900?1.1:0);
+    camera.position.y=state.morph*.8;camera.lookAt(0,state.morph*-.4,0);
+    renderer.render(scene,camera);
+  }
+  requestAnimationFrame(frame);
+})();
+ScrollTrigger.create({trigger:'.hero',start:'bottom 60%',onEnter:()=>state.target=1,onLeaveBack:()=>state.target=0});
+
+/* kursor */
+const cur=$('#cursor');
+if(!touch){
+  const xT=gsap.quickTo(cur,'x',{duration:.25,ease:'power3'}),yT=gsap.quickTo(cur,'y',{duration:.25,ease:'power3'});
+  addEventListener('pointermove',e=>{xT(e.clientX);yT(e.clientY)});
+  const mag=$('#mag');
+  mag.addEventListener('pointermove',e=>{const r=mag.getBoundingClientRect();gsap.to(mag,{x:(e.clientX-r.left-r.width/2)*.3,y:(e.clientY-r.top-r.height/2)*.4,duration:.4})});
+  mag.addEventListener('pointerleave',()=>gsap.to(mag,{x:0,y:0,duration:.7,ease:'elastic.out(1,.4)'}));
+}
+function hoverCursor(el,label){
+  if(touch)return;
+  el.addEventListener('pointerenter',()=>{cur.classList.add('big');cur.dataset.t=label||''});
+  el.addEventListener('pointerleave',()=>{cur.classList.remove('big');cur.dataset.t=''});
+}
+
+/* kartu karya */
+const works=[
+  {k:'text',t:'Text Reveal',d:'Judul muncul baris demi baris dengan masking.',g:'CSS'},
+  {k:'kpi',t:'Animated KPI',d:'Angka naik dan bar terisi bersamaan.',g:'JavaScript'},
+  {k:'net',t:'Network Particles',d:'Jaringan titik yang bereaksi pada kursor.',g:'Canvas'},
+  {k:'chart',t:'Line Chart Draw',d:'Garis tren tergambar mulus.',g:'SVG'},
+  {k:'cards',t:'Tilt Cards',d:'Kartu 3D yang mengikuti kursor.',g:'CSS 3D'},
+  {k:'tl',t:'Roadmap Timeline',d:'Garis waktu 2026 terisi bertahap.',g:'CSS'},
+];
+const track=$('#track');
+works.forEach((w,i)=>{
+  const a=document.createElement('a');a.className='card';a.href='samples.html?film='+w.k+'&auto=1';
+  a.innerHTML=`<div class="pv" data-k="${w.k}"></div><div class="cap"><div><h3>0${i+1} · ${w.t}</h3><p>${w.d}</p></div><small>${w.g}</small></div>`;
+  track.appendChild(a);
+  a.addEventListener('click',e=>{e.preventDefault();openModal(w.k)});
+  hoverCursor(a,'BUKA');
+});
+const more=document.createElement('a');more.className='card more';more.href='samples.html';
+more.innerHTML='<div class="pv">Lihat galeri lengkap →</div><div class="cap"><div><h3>Semua sample</h3><p>Versi interaktif dengan tombol ulang.</p></div></div>';
+track.appendChild(more);hoverCursor(more,'LIHAT');
+
+// iframe pratinjau dimuat bertahap agar ringan
+const ioPv=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;ioPv.unobserve(e.target);
+  const f=document.createElement('iframe');f.loading='lazy';f.title='Pratinjau';
+  f.src='samples.html?film='+e.target.dataset.k+'&auto=6&nocap=1';
+  f.onload=()=>f.classList.add('on');e.target.appendChild(f);
+}),{rootMargin:'0px 600px 0px 600px'});
+document.querySelectorAll('.pv[data-k]').forEach(p=>ioPv.observe(p));
+
+/* modal */
+const modal=$('#modal'),mf=$('#mframe');
+function openModal(k){mf.src='samples.html?film='+k+'&auto=8';modal.classList.add('open');document.body.classList.add('lock');lenis&&lenis.stop();}
+function closeModal(){modal.classList.remove('open');document.body.classList.remove('lock');mf.src='about:blank';lenis&&lenis.start();}
+$('#close').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* pernyataan */
+const stmt=$('#stmt'),hl=['Gerak','bukan','hiasan.','pesan','diingat.'];
+stmt.innerHTML=stmt.textContent.trim().split(/\s+/).map(w=>`<span class="w${hl.includes(w)?' hl':''}">${w}</span>`).join(' ');
+gsap.to('#stmt .w',{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:'#stmt',start:'top 75%',end:'bottom 45%',scrub:true}});
+
+/* karya horizontal */
+ScrollTrigger.matchMedia({
+  '(min-width: 801px)':()=>{
+    gsap.to(track,{x:()=>-(track.scrollWidth-innerWidth),ease:'none',
+      scrollTrigger:{trigger:'.work',pin:true,scrub:1,start:'top top',end:()=>'+='+(track.scrollWidth-innerWidth),invalidateOnRefresh:true}});
+  },
+  '(max-width: 800px)':()=>{
+    $('.work').style.cssText='height:auto;padding:12vh 0';
+    track.style.cssText='overflow-x:auto;scroll-snap-type:x mandatory;width:auto;padding-bottom:8px';
+    track.querySelectorAll('.card').forEach(c=>{c.style.scrollSnapAlign='center';c.style.flex='none'});
+  }
+});
+
+/* reveal */
+document.querySelectorAll('.work h2,.tools h2,.tools p,.chips,footer h2,.eyebrow').forEach(el=>{
+  if(el.closest('.hero')||el.closest('#loader'))return;
+  gsap.from(el,{y:50,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}});
+});
+gsap.to('#mq',{xPercent:-50,ease:'none',scrollTrigger:{trigger:'.marq',start:'top bottom',end:'bottom top',scrub:true}});
+
+/* loader → hero */
+const pct=$('#pct'),fill=$('#barfill'),L={v:0};
+lenis&&lenis.stop();
+gsap.set('.hero h1 .ln>span',{yPercent:110});
+gsap.timeline()
+  .to(L,{v:100,duration:reduce?.2:1.6,ease:'power2.inOut',onUpdate:()=>{pct.textContent=Math.round(L.v)+'%';fill.style.width=L.v+'%'}})
+  .to('#loader .big',{yPercent:-12,opacity:0,duration:.6,ease:'power2.in'},'+=.1')
+  .to('#loader',{yPercent:-100,duration:1,ease:'power4.inOut'},'<.1')
+  .add(()=>{lenis&&lenis.start()},'<.4')
+  .to('.hero h1 .ln>span',{yPercent:0,duration:1.3,ease:'power4.out',stagger:.12},'<.2')
+  .from('.hero .eyebrow,.hero .meta',{opacity:0,y:24,duration:1,ease:'power3.out',stagger:.15},'<.3')
+  .set('#loader',{display:'none'});
+})();
+</script>
+</body>
+</html>

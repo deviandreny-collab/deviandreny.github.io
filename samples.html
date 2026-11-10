@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motion Sample — Askrindo</title>
+<meta name="description" content="Koleksi sample motion design bertema PT Asuransi Kredit Indonesia (Askrindo).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1F44; --blue:#1E5BD8; --sky:#7FB2FF; --orange:#F37021;
+  --bg:#F6F8FC; --card:#fff; --tint:#EAF0FA; --line:#DCE3F0; --mute:#5B6B88;
+  --pad:clamp(20px,5vw,72px);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Public Sans',system-ui,sans-serif;background:var(--bg);color:var(--navy);-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit;text-decoration:none}
+
+header{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad);background:rgba(246,248,252,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font-weight:800;letter-spacing:.02em}.logo b{color:var(--orange)}
+header a.ext{font-size:13px;color:var(--mute);transition:color .2s}header a.ext:hover{color:var(--orange)}
+
+.intro{padding:clamp(48px,9vw,120px) var(--pad) clamp(28px,4vw,56px);max-width:1280px;margin:auto}
+.tag{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--orange)}
+.intro h1{font-size:clamp(38px,7vw,96px);line-height:1;letter-spacing:-.04em;font-weight:800;margin:14px 0 22px}
+.intro h1 em{font-style:normal;color:var(--blue)}
+.intro p{max-width:620px;color:var(--mute);font-size:17px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.chips span{font-size:12px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--mute)}
+
+.grid{max-width:1280px;margin:auto;padding:0 var(--pad) 80px;display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.demo{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease),box-shadow .3s}
+.demo.show{opacity:1;transform:none}
+.demo:hover{box-shadow:0 18px 50px rgba(10,31,68,.09)}
+.stage{position:relative;aspect-ratio:16/10;background:var(--tint);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.stage.dark{background:linear-gradient(160deg,#0A1F44,#0d2a5c)}
+.info{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px 22px 22px}
+.info h3{font-size:18px;letter-spacing:-.01em}
+.info p{font-size:14px;color:var(--mute);margin-top:4px;max-width:46ch}
+.info small{display:block;margin-top:10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-weight:600}
+.replay{flex:none;border:1px solid var(--line);background:#fff;color:var(--navy);font:inherit;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;cursor:pointer;transition:all .25s}
+.replay:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.replay:focus-visible,.card3:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.sample{position:absolute;right:12px;top:10px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);opacity:.7}
+.dark .sample{color:#9fb4d8}
+
+/* 1 text reveal */
+.t1{color:#fff;font-weight:800;letter-spacing:-.04em;line-height:.95;font-size:clamp(30px,5.6vw,64px);padding:0 8%;width:100%}
+.t1 .m{display:block;overflow:hidden;padding-bottom:.06em}
+.t1 .m span{display:block;transform:translateY(110%);transition:transform 1s var(--ease)}
+.t1.in .m span{transform:none}
+.t1 em{font-style:normal;color:var(--orange)}
+
+/* 2 kpi */
+.kpis{width:100%;padding:0 9%;display:grid;gap:20px}
+.kpi .row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--mute);margin-bottom:8px}
+.kpi b{font-size:clamp(24px,3.4vw,38px);color:var(--navy);letter-spacing:-.03em}
+.bar{height:8px;border-radius:99px;background:#fff;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--sky));transition:width 1.6s var(--ease)}
+.kpi:nth-child(2) .bar i{background:linear-gradient(90deg,var(--orange),#ffa56b)}
+
+/* 3 network */
+#net{position:absolute;inset:0;width:100%;height:100%}
+.netlabel{position:relative;z-index:1;color:#fff;font-weight:800;letter-spacing:-.03em;font-size:clamp(22px,3.4vw,40px);pointer-events:none;text-align:center}
+.netlabel em{font-style:normal;color:var(--orange)}
+
+/* 4 chart */
+.chart{width:90%;height:84%}
+.chart .grid-l{stroke:#cdd8ec;stroke-width:1}
+.chart .ln{fill:none;stroke:var(--blue);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.chart .ar{fill:url(#ga);opacity:0;transition:opacity 1s .9s}
+.chart .dot{fill:#fff;stroke:var(--orange);stroke-width:3;transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .5s var(--ease)}
+.chart text{font-size:11px;fill:var(--mute);font-family:inherit}
+.chart.in .ar{opacity:1}
+.chart.in .dot{transform:scale(1)}
+
+/* 5 tilt cards */
+.cards3{display:flex;gap:14px;width:86%;perspective:900px}
+.card3{flex:1;aspect-ratio:3/4;border-radius:16px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;font-weight:600;font-size:clamp(11px,1.6vw,15px);background:linear-gradient(160deg,var(--blue),var(--navy));position:relative;overflow:hidden;opacity:0;transform:translateY(40px);transition:opacity .7s var(--ease),transform .7s var(--ease);will-change:transform}
+.card3:nth-child(2){background:linear-gradient(160deg,var(--orange),#c24d0b)}
+.card3:nth-child(3){background:linear-gradient(160deg,#2a4a86,#0A1F44)}
+.cards3.in .card3{opacity:1;transform:none}
+.card3 .gl{position:absolute;inset:0;background:radial-gradient(circle at var(--gx,50%) var(--gy,0%),rgba(255,255,255,.35),transparent 55%);opacity:0;transition:opacity .3s}
+.card3:hover .gl{opacity:1}
+.card3 small{opacity:.75;font-weight:500}
+.card3.tilting{transition:opacity .7s var(--ease),transform .08s linear}
+
+/* 6 timeline */
+.tl{width:86%;position:relative;padding-top:34px}
+.tl .rail{height:3px;background:#cbd7ee;border-radius:3px;position:relative;overflow:hidden}
+.tl .rail i{position:absolute;inset:0;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 2.2s var(--ease)}
+.tl.in .rail i{transform:scaleX(1)}
+.tl ul{list-style:none;display:flex;justify-content:space-between;margin-top:-11px}
+.tl li{display:flex;flex-direction:column;align-items:center;gap:12px;font-size:13px;text-align:center;opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.tl li::before{content:"";width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid var(--orange)}
+.tl li b{display:block;font-size:15px}.tl li span{color:var(--mute);font-size:12px}
+.tl.in li{opacity:1;transform:none}
+
+footer{max-width:1280px;margin:auto;padding:32px var(--pad) 56px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--mute)}
+
+/* mode film */
+.fcard,.fcap,.fcur{display:none}
+.film header,.film .intro,.film footer,.film .info,.film .sample{display:none!important}
+.film body{overflow:hidden}
+.film .grid{display:block;padding:0;max-width:none;margin:0}
+.film .demo{display:none;border:0;border-radius:0;opacity:1;transform:none;box-shadow:none}
+.film .demo.on{display:block}
+.film .stage{aspect-ratio:auto;width:100vw;height:100vh}
+.film .t1{font-size:11vw;padding:0 9vw}
+.film .tl{width:84%}.film .tl .rail{height:4px}
+.film .cards3{width:78%}
+@media (orientation:portrait){
+  .film .fcard h2{font-size:15vw}
+  .film .fcard p{font-size:4vw}
+  .film .fcard{padding:0 8vw}
+  html.film .fcap{left:50%;right:auto;transform:translateX(-50%);bottom:7vh;font-size:15px;padding:12px 20px;white-space:nowrap}
+  html.film .chart{width:90%}
+  .film .t1{font-size:15vw;padding:0 8vw}
+  .film .kpis{padding:0 8%;gap:6vh}
+  .film .kpi b{font-size:11vw}.film .kpi .row{font-size:16px}
+  .film .chart{width:96%;height:auto}
+  .film .cards3{flex-direction:column;width:76%;gap:2.4vh}
+  .film .card3{aspect-ratio:auto;height:19vh;flex:none;font-size:20px;padding:20px}
+  .film .tl{width:auto;padding:0;display:flex;height:62vh;gap:0}
+  .film .tl .rail{width:4px;height:100%}
+  .film .tl .rail i{transform:scaleY(0);transform-origin:top}
+  .film .tl.in .rail i{transform:scaleY(1)}
+  .film .tl ul{flex-direction:column;margin:0 0 0 -11px;height:100%}
+  .film .tl li{flex-direction:row;gap:18px;font-size:18px;text-align:left}
+  .film .tl li b{font-size:26px}.film .tl li span{font-size:16px}
+}
+.film .fcap{display:flex;position:fixed;left:28px;bottom:24px;gap:10px;align-items:center;background:#fff;color:var(--navy);padding:9px 16px;border-radius:999px;font-size:13px;font-weight:600;box-shadow:0 6px 24px rgba(0,0,0,.18);z-index:9}
+.film .fcap::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.film .fcap.off,.film.fc-card .fcap{display:none}
+.film .fcap-r{display:block}
+.film .fcur{display:block;position:fixed;left:0;top:0;width:22px;height:22px;margin:-11px 0 0 -11px;border:2px solid var(--orange);border-radius:50%;background:rgba(243,112,33,.25);z-index:10;pointer-events:none;opacity:0}
+.film .fcard.on{display:flex;position:fixed;inset:0;background:linear-gradient(160deg,#0A1F44,#0d2a5c);color:#fff;align-items:center;padding:0 9vw;z-index:8}
+.fcard h2{font-size:clamp(40px,9vw,96px);line-height:.98;letter-spacing:-.04em;font-weight:800;margin:14px 0 18px}
+.fcard h2 em{font-style:normal;color:var(--orange)}
+.fcard p{color:#9fb4d8;font-size:clamp(14px,2vw,22px)}
+.fcard .fc-in>*{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.fcard.in .fc-in>*{opacity:1;transform:none}
+.fcard.in .fc-in>*:nth-child(2){transition-delay:.15s}.fcard.in .fc-in>*:nth-child(3){transition-delay:.35s}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;transition-delay:0s!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">ASK<b>RINDO</b> <span style="font-weight:500;color:var(--mute)">· Motion Sample</span></div>
+  <a class="ext" href="https://www.askrindo.co.id" target="_blank" rel="noopener">askrindo.co.id ↗</a>
+</header>
+
+<section class="intro">
+  <span class="tag">Portofolio Motion Design · 2026</span>
+  <h1>Gerak yang membuat <em>pesan</em> lebih jelas.</h1>
+  <p>Enam sample motion bertema Askrindo: tipografi, data, konektivitas, dan interaksi. Semuanya dibuat ringan, tanpa library, dan menghormati pengaturan "kurangi gerakan".</p>
+  <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>SVG</span><span>Canvas</span><span>Tanpa library</span></div>
+</section>
+
+<main class="grid">
+
+  <article class="demo" data-demo="text">
+    <div class="stage dark">
+      <div class="t1" id="t1"><span class="m"><span>Menjamin</span></span><span class="m"><span>langkah <em>maju</em></span></span><span class="m"><span>Indonesia.</span></span></div>
+    </div>
+    <div class="info"><div><h3>01 · Text Reveal</h3><p>Judul muncul baris demi baris dengan masking, cocok untuk hero dan pembuka presentasi.</p><small>CSS transition</small></div><button class="replay">↻ Ulang</button></div>
+  </article>
+
+  <article class="demo" data-demo="kpi">
+    <div class="stage">
+      <span class="sample">Data contoh</span>
+      <div class="kpis" id="kpis">
+        <div class="kpi" data-v="72" data-s="%"><div class="row"><span>Realisasi program</span><b>0%</b></div><div class="bar"><i></i></div></div>
+        <div class="kpi" data-v="48" data-s=""><div class="row"><span>Inisiatif berjalan</span><b>0</b></div><div class="bar"><i></i></div></div>
+        <div class="kpi" data-v="91" data-s="%"><div class="row"><span>Kepuasan mitra</span><b>0%</b></div><div class="bar"><i></i></div></div>
+      </div>
+    </div>
+    <div class="info"><div><h3>02 · Animated KPI</h3><p>Angka naik dan bar terisi bersamaan, mengubah angka kering menjadi cerita capaian.</p><small>requestAnimationFrame</small></div><button class="replay">↻ Ulang</button></div>
+  </article>
+
+  <article class="demo" data-demo="net">
+    <div class="stage dark">
+      <canvas id="net"></canvas>
+      <div class="netlabel">Terhubung<br><em>bersama</em></div>
+    </div>
+    <div class="info"><div><h3>03 · Network Particles</h3><p>Jaringan titik yang bereaksi pada kursor, melambangkan kolaborasi antara bank, mitra, dan UMKM.</p><small>Canvas 2D · interaktif</small></div><button class="replay">↻ Ulang</button></div>
+  </article>
+
+  <article class="demo" data-demo="chart">
+    <div class="stage">
+      <span class="sample">Data contoh</span>
+      <svg class="chart" id="chart" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+        <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E5BD8" stop-opacity=".28"/><stop offset="1" stop-color="#1E5BD8" stop-opacity="0"/></linearGradient></defs>
+        <g class="gl-g"></g>
+        <path class="ar" d=""/>
+        <path class="ln" d=""/>
+        <g class="dots"></g>
+        <g class="lbl"></g>
+      </svg>
+    </div>
+    <div class="info"><div><h3>04 · Line Chart Draw</h3><p>Garis tren tergambar mulus diikuti titik penting, memandu mata ke arah pertumbuhan.</p><small>SVG stroke-dashoffset</small></div><button class="replay">↻ Ulang</button></div>
+  </article>
+
+  <article class="demo" data-demo="cards">
+    <div class="stage">
+      <div class="cards3" id="cards3">
+        <div class="card3" tabindex="0"><div class="gl"></div><small>01</small><span>Asuransi Kredit</span></div>
+        <div class="card3" tabindex="0"><div class="gl"></div><small>02</small><span>Suretyship</span></div>
+        <div class="card3" tabindex="0"><div class="gl"></div><small>03</small><span>Penjaminan</span></div>
+      </div>
+    </div>
+    <div class="info"><div><h3>05 · Tilt Cards</h3><p>Kartu masuk bergantian, lalu miring mengikuti kursor dengan kilau cahaya. Arahkan mouse ke kartu.</p><small>CSS 3D transform</small></div><button class="replay">↻ Ulang</button></div>
+  </article>
+
+  <article class="demo" data-demo="tl">
+    <div class="stage">
+      <span class="sample">Isi contoh</span>
+      <div class="tl" id="tl">
+        <div class="rail"><i></i></div>
+        <ul>
+          <li><b>Q1</b><span>Fondasi</span></li>
+          <li><b>Q2</b><span>Akselerasi</span></li>
+          <li><b>Q3</b><span>Ekspansi</span></li>
+          <li><b>Q4</b><span>Evaluasi</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="info"><div><h3>06 · Roadmap Timeline</h3><p>Garis waktu 2026 terisi bertahap dengan milestone yang muncul tepat saat garis melewatinya.</p><small>CSS transition + delay</small></div><button class="replay">↻ Ulang</button></div>
+  </article>
+
+</main>
+
+<footer>
+  <span>Devi Andreny · Motion Design</span>
+  <span>Sample konsep untuk Askrindo, bukan materi resmi perusahaan.</span>
+</footer>
+
+<!-- Mode film (?film=...) hanya dipakai untuk merekam video -->
+<section class="fcard" id="film-title"><div class="fc-in"><span class="tag">Portofolio Motion Design · 2026</span><h2>Motion Sample<br><em>Askrindo</em></h2><p>Devi Andreny</p></div></section>
+<section class="fcard" id="film-end"><div class="fc-in"><span class="tag">Terima kasih</span><h2>Devi Andreny<br><em>Motion Design</em></h2><p>Sample konsep untuk PT Asuransi Kredit Indonesia · bukan materi resmi perusahaan</p></div></section>
+<div class="fcap" id="fcap"></div><div class="fcur" id="fcur"></div>
+
+<script>
+(function(){
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const reflow=el=>void el.offsetWidth;
+const plays={};
+
+/* 1 — text reveal */
+plays.text=()=>{
+  const t=$('#t1');t.classList.remove('in');
+  $$('.m span',t).forEach((s,i)=>s.style.transitionDelay=(i*.12)+'s');
+  reflow(t);t.classList.add('in');
+};
+
+/* 2 — KPI */
+plays.kpi=()=>{
+  $$('#kpis .kpi').forEach((k,i)=>{
+    const v=+k.dataset.v,s=k.dataset.s,b=$('b',k),bar=$('i',k);
+    bar.style.transition='none';bar.style.width='0';reflow(bar);
+    bar.style.transition='';bar.style.transitionDelay=(i*.15)+'s';bar.style.width=v+'%';
+    const dur=reduce?1:1600,t0=performance.now()+i*150;
+    (function tick(n){
+      const p=Math.min(Math.max((n-t0)/dur,0),1),e=1-Math.pow(1-p,3);
+      b.textContent=Math.round(v*e)+s;
+      if(p<1)requestAnimationFrame(tick);
+    })(performance.now());
+  });
+};
+
+/* 3 — network canvas */
+const cv=$('#net'),cx=cv.getContext('2d');
+let W=0,H=0,dpr=1,nodes=[],mouse={x:-999,y:-999},netOn=false,raf=0;
+function seed(burst){
+  const n=W<420?38:60;nodes=[];
+  for(let i=0;i<n;i++){
+    const a=Math.random()*6.283,sp=.15+Math.random()*.35;
+    nodes.push({x:burst?W/2:Math.random()*W,y:burst?H/2:Math.random()*H,vx:Math.cos(a)*sp*(burst?4:1),vy:Math.sin(a)*sp*(burst?4:1),r:1.4+Math.random()*1.6});
+  }
+}
+function size(){
+  const r=cv.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);
+  W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);
+  if(!nodes.length)seed();
+}
+new ResizeObserver(size).observe(cv);
+cv.parentElement.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top});
+cv.parentElement.addEventListener('pointerleave',()=>{mouse.x=mouse.y=-999});
+function loop(){
+  cx.clearRect(0,0,W,H);
+  const D=Math.min(120,W*.22);
+  for(const p of nodes){
+    if(!reduce){p.x+=p.vx;p.y+=p.vy;}
+    p.vx*=.995;p.vy*=.995;
+    const sp=Math.hypot(p.vx,p.vy);if(sp<.12){p.vx*=1.02;p.vy*=1.02;}
+    if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+    const dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.hypot(dx,dy);
+    if(d<110&&!reduce){p.x+=dx/d*(110-d)*.03;p.y+=dy/d*(110-d)*.03;}
+  }
+  for(let i=0;i<nodes.length;i++){
+    const a=nodes[i];
+    for(let j=i+1;j<nodes.length;j++){
+      const b=nodes[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<D){cx.strokeStyle=`rgba(127,178,255,${(1-d/D)*.5})`;cx.lineWidth=1;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke();}
+    }
+    const m=Math.hypot(a.x-mouse.x,a.y-mouse.y);
+    if(m<140){cx.strokeStyle=`rgba(243,112,33,${(1-m/140)*.8})`;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(mouse.x,mouse.y);cx.stroke();}
+    cx.fillStyle=m<140?'#F37021':'#9ec3ff';cx.beginPath();cx.arc(a.x,a.y,a.r,0,6.283);cx.fill();
+  }
+  raf=netOn?requestAnimationFrame(loop):0;
+}
+function netStart(){if(!raf){netOn=true;raf=requestAnimationFrame(loop);}}
+new IntersectionObserver(es=>es.forEach(e=>{netOn=e.isIntersecting;if(netOn)netStart();}),{threshold:.1}).observe(cv);
+plays.net=()=>{seed(true);netStart();};
+
+/* 4 — chart */
+const data=[30,42,38,60,55,78,92], months=['Jan','Mar','Mei','Jul','Sep','Nov','Des'];
+(function buildChart(){
+  const svg=$('#chart'),L=30,R=380,T=20,B=165,n=data.length;
+  const X=i=>L+i*(R-L)/(n-1),Y=v=>B-(v/100)*(B-T);
+  const pts=data.map((v,i)=>[X(i),Y(v)]);
+  let d='M'+pts.map(p=>p.join(',')).join(' L');
+  $('.ln',svg).setAttribute('d',d);
+  $('.ar',svg).setAttribute('d',d+` L${R},${B} L${L},${B} Z`);
+  const NS='http://www.w3.org/2000/svg';
+  [0,50,100].forEach(v=>{const l=document.createElementNS(NS,'line');l.setAttribute('class','grid-l');l.setAttribute('x1',L);l.setAttribute('x2',R);l.setAttribute('y1',Y(v));l.setAttribute('y2',Y(v));$('.gl-g',svg).appendChild(l);});
+  pts.forEach((p,i)=>{
+    const c=document.createElementNS(NS,'circle');c.setAttribute('class','dot');c.setAttribute('cx',p[0]);c.setAttribute('cy',p[1]);c.setAttribute('r',5);c.style.transitionDelay=(.2+i*.22)+'s';$('.dots',svg).appendChild(c);
+    const t=document.createElementNS(NS,'text');t.setAttribute('x',p[0]);t.setAttribute('y',188);t.setAttribute('text-anchor','middle');t.textContent=months[i];$('.lbl',svg).appendChild(t);
+  });
+})();
+plays.chart=()=>{
+  const svg=$('#chart'),ln=$('.ln',svg),len=ln.getTotalLength();
+  svg.classList.remove('in');
+  ln.style.transition='none';ln.style.strokeDasharray=len;ln.style.strokeDashoffset=len;reflow(ln);
+  ln.style.transition='stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1)';ln.style.strokeDashoffset=0;
+  svg.classList.add('in');
+};
+
+/* 5 — tilt cards */
+const c3=$('#cards3');
+$$('.card3',c3).forEach((c,i)=>{
+  c.style.transitionDelay=(i*.12)+'s';
+  c.addEventListener('pointermove',e=>{
+    if(reduce)return;
+    const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+    c.classList.add('tilting');c.style.transitionDelay='0s';
+    c.style.transform=`rotateY(${(x-.5)*18}deg) rotateX(${(.5-y)*18}deg) translateZ(8px)`;
+    c.style.setProperty('--gx',x*100+'%');c.style.setProperty('--gy',y*100+'%');
+  });
+  c.addEventListener('pointerleave',()=>{c.classList.remove('tilting');c.style.transform='';});
+});
+plays.cards=()=>{
+  c3.classList.remove('in');
+  $$('.card3',c3).forEach((c,i)=>{c.style.transform='';c.style.transitionDelay=(i*.12)+'s'});
+  reflow(c3);c3.classList.add('in');
+};
+
+/* 6 — timeline */
+plays.tl=()=>{
+  const t=$('#tl');t.classList.remove('in');
+  $$('li',t).forEach((li,i)=>li.style.transitionDelay=(.2+i*.62)+'s');
+  reflow(t);t.classList.add('in');
+};
+
+/* mode film: ?film=title|text|kpi|net|chart|cards|tl|end */
+const film=new URLSearchParams(location.search).get('film');
+if(film){
+  document.documentElement.classList.add('film');
+  const card=film==='title'||film==='end';
+  if(card){
+    document.documentElement.classList.add('fc-card');
+    $('#film-'+film).classList.add('on');
+    window.__play=()=>$('#film-'+film).classList.add('in');
+  }else{
+    const d=$(`.demo[data-demo="${film}"]`);d.classList.add('on','show');
+    $('#fcap').textContent=$('h3',d).textContent;
+    const cur=$('#fcur');
+    addEventListener('pointermove',e=>{cur.style.opacity=1;cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
+    window.__play=()=>plays[film]();
+    const q=new URLSearchParams(location.search);
+    if(q.get('nocap'))$('#fcap').classList.add('off');
+    if(q.get('auto')){setTimeout(()=>plays[film](),400);setInterval(()=>plays[film](),+q.get('auto')>1?+q.get('auto')*1000:7000);}
+    window.dispatchEvent(new Event('resize'));
+  }
+}
+
+/* wiring: play saat terlihat, tombol ulang */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.classList.add('show');
+    if(!e.target.dataset.done){e.target.dataset.done=1;setTimeout(()=>plays[e.target.dataset.demo](),250);}
+  }
+}),{threshold:.35});
+$$('.demo').forEach(d=>{
+  if(!film)io.observe(d);
+  $('.replay',d).addEventListener('click',()=>plays[d.dataset.demo]());
+});
+})();
+</script>
+</body>
+</html>
