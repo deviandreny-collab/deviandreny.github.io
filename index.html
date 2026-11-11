@@ -1,41 +1,40 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Devi Andreny — Motion Portfolio</title>
-<meta name="description" content="Portofolio motion design Devi Andreny: sample motion bertema PT Asuransi Kredit Indonesia (Askrindo).">
+<title>Portofolio — Graphic Designer</title>
+<meta name="description" content="Portofolio of a Graphic Designer and Informatics Engineering graduate with a UI/UX background.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0A1F44;--ink:#040C1E;--blue:#1E5BD8;--sky:#7FB2FF;--orange:#F37021;--white:#F4F7FC;--mute:rgba(244,247,252,.62);--pad:clamp(20px,4vw,56px);--ease:cubic-bezier(.2,.8,.2,1)}
+:root{--navy:#111;--ink:#F4F3EF;--blue:#111;--sky:#999;--orange:#E4572E;--white:#111;--mute:rgba(17,17,17,.58);--pad:clamp(20px,4vw,56px);--ease:cubic-bezier(.2,.8,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--ink)}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 body{font-family:'Public Sans',system-ui,sans-serif;background:var(--ink);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-body.lock{overflow:hidden}
 a{color:inherit;text-decoration:none}
 #gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 main,footer{position:relative;z-index:2}
 
 #loader{position:fixed;inset:0;z-index:100;background:var(--ink);display:flex;flex-direction:column;justify-content:space-between;padding:var(--pad)}
-#loader .big{font-size:clamp(56px,14vw,220px);font-weight:800;letter-spacing:-.04em;line-height:.85}
+#loader .big{white-space:nowrap;font-size:clamp(36px,11.5vw,210px);font-weight:800;letter-spacing:-.04em;line-height:.85}
 #loader .big span{color:var(--orange)}
 #loader .row{display:flex;justify-content:space-between;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
-#loader .bar{height:2px;background:rgba(255,255,255,.12);margin:14px 0}
+#loader .bar{height:2px;background:rgba(17,17,17,.12);margin:14px 0}
 #loader .bar i{display:block;height:100%;width:0;background:var(--orange)}
 
-.cursor{position:fixed;left:0;top:0;width:14px;height:14px;border-radius:50%;background:var(--orange);z-index:200;pointer-events:none;mix-blend-mode:screen;transform:translate(-50%,-50%);transition:width .3s,height .3s}
+.cursor{position:fixed;left:0;top:0;width:14px;height:14px;border-radius:50%;background:var(--orange);z-index:200;pointer-events:none;transform:translate(-50%,-50%);transition:width .3s,height .3s}
 .cursor.big{width:76px;height:76px}
 .cursor::after{content:attr(data-t);position:absolute;inset:0;display:grid;place-items:center;font-size:12px;font-weight:600;color:#fff;letter-spacing:.06em}
 @media (hover:none){.cursor{display:none}}
 
-header{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:22px var(--pad);z-index:50;mix-blend-mode:difference}
+header{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:22px var(--pad);z-index:50;background:rgba(244,243,239,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .logo{font-weight:800;font-size:19px;letter-spacing:.01em}.logo b{color:var(--orange)}
 nav{display:flex;gap:clamp(14px,2.5vw,36px);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 nav a{opacity:.8;transition:opacity .3s}nav a:hover{opacity:1}
-@media(max-width:600px){nav a:nth-child(1){display:none}}
+@media(max-width:640px){nav a:nth-child(1),nav a:nth-child(3){display:none}}
 
 section{position:relative}
 .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);font-weight:600}
@@ -46,43 +45,59 @@ section{position:relative}
 .hero h1 .ln>span{display:block}
 .hero h1 em{font-style:normal;color:var(--orange)}
 .hero .meta{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:clamp(24px,4vw,48px);flex-wrap:wrap}
-.hero .meta p{max-width:430px;color:var(--mute);line-height:1.6;font-size:15px}
+.hero .meta p{max-width:450px;color:var(--mute);line-height:1.6;font-size:15px}
 .scrollhint{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
 .scrollhint i{width:1px;height:46px;background:linear-gradient(var(--orange),transparent);display:block;animation:drip 1.8s infinite}
 @keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 .statement{padding:26vh var(--pad);min-height:100svh;display:flex;align-items:center}
-.statement p{font-size:clamp(28px,5vw,80px);line-height:1.1;letter-spacing:-.03em;font-weight:500;max-width:1350px}
+.statement p{font-size:clamp(20px,2.5vw,36px);line-height:1.45;letter-spacing:-.015em;font-weight:400;max-width:960px}
 .statement .w{opacity:.14;display:inline-block}
 .statement .w.hl{color:var(--orange)}
 
 /* karya */
 .work{height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
 .work .head{padding:0 var(--pad);display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5vh}
-.work h2{font-size:clamp(34px,5.6vw,90px);letter-spacing:-.04em;line-height:.95}
+.work h2,.sk h2,.xp h2{font-size:clamp(34px,5.6vw,90px);letter-spacing:-.04em;line-height:.95}
 .track{display:flex;gap:clamp(16px,2vw,30px);padding:0 var(--pad);width:max-content}
-.card{width:clamp(300px,38vw,580px);cursor:pointer;display:block}
-.pv{position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;background:#0d2a5c;border:1px solid rgba(127,178,255,.2);transition:border-color .4s,transform .6s var(--ease)}
-.pv iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;opacity:0;transition:opacity .8s}
-.pv iframe.on{opacity:1}
-.card:hover .pv{border-color:var(--orange);transform:translateY(-6px)}
+.card{width:clamp(300px,38vw,580px);display:block}
+.card.link{cursor:pointer}
+.pv{position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#ECEAE4,#E2DFD8);border:1px solid rgba(17,17,17,.2);display:grid;place-items:center;transition:border-color .4s,transform .6s var(--ease)}
+.pv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pv .ph{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--mute);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.pv .ph b{font-size:clamp(40px,5vw,72px);font-weight:800;letter-spacing:-.04em;color:rgba(17,17,17,.35)}
+.card.link:hover .pv{border-color:var(--orange);transform:translateY(-6px)}
 .card .cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:16px 4px 0}
 .card .cap h3{font-size:clamp(18px,1.8vw,26px);letter-spacing:-.02em}
 .card .cap small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);white-space:nowrap}
 .card .cap p{font-size:14px;color:var(--mute);margin-top:4px}
-.card.more .pv{display:grid;place-items:center;background:var(--orange);border-color:var(--orange);font-size:clamp(24px,3vw,44px);font-weight:800;letter-spacing:-.03em;text-align:center;padding:20px}
+.card.more .pv{color:#fff;background:var(--orange);border-color:var(--orange);font-size:clamp(24px,3vw,44px);font-weight:800;letter-spacing:-.03em;text-align:center;padding:20px}
 
-.tools{padding:14vh var(--pad);display:grid;grid-template-columns:1fr 1.4fr;gap:6vw;border-top:1px solid rgba(255,255,255,.1)}
-.tools h2{font-size:clamp(34px,5vw,80px);letter-spacing:-.04em;line-height:.95}
-.tools p{color:var(--mute);line-height:1.7;font-size:17px;max-width:560px}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.chips span{font-size:13px;padding:9px 16px;border:1px solid rgba(127,178,255,.3);border-radius:999px;transition:all .3s}
+/* pengalaman */
+.xp{padding:16vh var(--pad) 8vh}
+.xp h2{margin:14px 0 7vh}
+.xr{display:grid;grid-template-columns:200px 1fr 1.5fr;gap:24px;padding:32px 0;border-top:1px solid rgba(17,17,17,.14);align-items:baseline;transition:background .4s,padding .4s}
+.xr:hover{background:linear-gradient(90deg,rgba(243,112,33,.1),transparent);padding-left:18px}
+.xr .d{color:var(--orange);font-weight:600;font-size:15px}
+.xr h4{font-size:clamp(20px,2.2vw,32px);letter-spacing:-.02em;font-weight:600}
+.xr h4 span{display:block;font-size:15px;font-weight:400;color:var(--mute);letter-spacing:0;margin-top:6px}
+.xr ul{list-style:none;color:var(--mute);line-height:1.6;font-size:15px;display:grid;gap:8px}
+.xr li{padding-left:16px;position:relative}.xr li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+@media(max-width:800px){.xr{grid-template-columns:1fr;gap:10px}}
+
+/* keahlian */
+.sk{padding:10vh var(--pad) 16vh;border-top:1px solid rgba(17,17,17,.1)}
+.sk h2{margin:14px 0 6vh}
+.sg{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-top:1px solid rgba(17,17,17,.1);align-items:start}
+.sg h5{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:600;padding-top:9px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{font-size:14px;padding:9px 16px;border:1px solid rgba(17,17,17,.3);border-radius:999px;transition:all .3s}
 .chips span:hover{background:var(--orange);border-color:var(--orange)}
-@media(max-width:800px){.tools{grid-template-columns:1fr}}
+@media(max-width:800px){.sg{grid-template-columns:1fr;gap:6px}}
 
-.marq{overflow:hidden;white-space:nowrap;padding:5vh 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1)}
+.marq{overflow:hidden;white-space:nowrap;padding:5vh 0;border-top:1px solid rgba(17,17,17,.1);border-bottom:1px solid rgba(17,17,17,.1)}
 .marq div{display:inline-block;font-size:clamp(44px,8vw,130px);font-weight:800;letter-spacing:-.04em;will-change:transform}
-.marq span{margin:0 .35em;-webkit-text-stroke:1.5px rgba(244,247,252,.55);color:transparent}
+.marq span{margin:0 .35em;-webkit-text-stroke:1.5px rgba(17,17,17,.45);color:transparent}
 .marq span.f{color:var(--orange);-webkit-text-stroke:0}
 
 footer{padding:20vh var(--pad) var(--pad);min-height:100svh;display:flex;flex-direction:column;justify-content:space-between}
@@ -90,86 +105,101 @@ footer h2{font-size:clamp(46px,10.5vw,176px);letter-spacing:-.05em;line-height:.
 footer h2 em{font-style:normal;color:var(--orange)}
 .btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
 .btn{display:inline-flex;align-items:center;gap:12px;padding:18px 30px;border-radius:999px;background:var(--orange);color:#fff;font-weight:600;letter-spacing:.04em;transition:box-shadow .4s}
-.btn.o{background:transparent;border:1px solid rgba(255,255,255,.35)}
+.btn.o{color:var(--white);background:transparent;border:1px solid rgba(17,17,17,.35)}
 .btn:hover{box-shadow:0 0 60px rgba(243,112,33,.5)}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:12vh;color:var(--mute);font-size:13px}
-
-/* modal */
-#modal{position:fixed;inset:0;z-index:150;background:rgba(4,12,30,.92);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:4vw}
-#modal.open{display:flex}
-#modal .box{width:min(1200px,100%);aspect-ratio:16/9;max-height:84vh;border-radius:20px;overflow:hidden;background:#000;position:relative;transform:scale(.94);opacity:0;transition:all .5s var(--ease)}
-#modal.open .box{transform:none;opacity:1}
-#modal iframe{width:100%;height:100%;border:0}
-#modal button{position:absolute;top:16px;right:20px;z-index:2;background:#fff;color:var(--navy);border:0;border-radius:999px;padding:10px 18px;font:600 13px 'Public Sans',sans-serif;cursor:pointer}
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}
 </style>
 </head>
 <body>
 
 <div id="loader">
-  <div class="row"><span>Motion Portfolio</span><span id="pct">0%</span></div>
-  <div class="big">DEVI<br>ANDRENY<span>.</span></div>
-  <div><div class="bar"><i id="barfill"></i></div><div class="row"><span>Memuat karya</span><span>2026</span></div></div>
+  <div class="row"><span>Graphic Design Portofolio</span><span id="pct">0%</span></div>
+  <div class="big">PORTOFOLIO<span>.</span></div>
+  <div><div class="bar"><i id="barfill"></i></div><div class="row"><span>Loading portofolio</span><span>2026</span></div></div>
 </div>
 <div class="cursor" id="cursor"></div>
 <canvas id="gl"></canvas>
 
 <header>
-  <a href="#top" class="logo">Devi <b>Andreny</b></a>
-  <nav><a href="#karya">Karya</a><a href="#tentang">Tentang</a><a href="#kontak">Kontak</a></nav>
+  <a href="#top" class="logo">Portofolio<b>.</b></a>
+  <nav><a href="#tentang">About</a><a href="#karya">Work</a><a href="#pengalaman">Experience</a><a href="#kontak">Contact</a></nav>
 </header>
 
 <main id="top">
   <section class="hero">
-    <div class="eyebrow" style="margin-bottom:3vh">Motion Portfolio · 2026</div>
+    <div class="eyebrow" style="margin-bottom:3vh">Graphic Designer · Portofolio 2026</div>
     <h1>
-      <span class="ln"><span>Motion yang</span></span>
-      <span class="ln"><span><em>menggerakkan</em></span></span>
-      <span class="ln"><span>pesan.</span></span>
+      <span class="ln"><span>Visuals that</span></span>
+      <span class="ln"><span><em>deliver</em></span></span>
+      <span class="ln"><span>the message.</span></span>
     </h1>
     <div class="meta">
-      <p>Devi Andreny. Sample motion design untuk komunikasi korporat, dibuat dengan tema PT Asuransi Kredit Indonesia (Askrindo).</p>
+      <p>Graphic Designer and Informatics Engineering graduate with a UI/UX background, based in Bekasi, Indonesia.</p>
       <div class="scrollhint"><i></i>Scroll</div>
     </div>
   </section>
 
   <section class="statement" id="tentang">
-    <p id="stmt">Gerak bukan hiasan. Ia membuat angka lebih mudah dipahami, proses lebih mudah diikuti, dan pesan perusahaan lebih mudah diingat. Setiap sample di sini adalah eksperimen kecil untuk itu.</p>
+    <p id="stmt">I'm a Graphic Designer and Informatics Engineering graduate. I combine business needs with an understanding of user behavior to create functional and visually appealing designs, using AI to work faster.</p>
   </section>
 
   <section class="work" id="karya">
     <div class="head">
-      <div><div class="eyebrow">Karya</div><h2>Enam sample motion</h2></div>
-      <div class="eyebrow" style="opacity:.7">Geser · Klik untuk membuka →</div>
+      <div><div class="eyebrow">Work</div><h2 style="margin-top:14px">Selected work</h2></div>
+      <div class="eyebrow" style="opacity:.7">Scroll →</div>
     </div>
     <div class="track" id="track"></div>
   </section>
 
-  <section class="tools">
-    <div><div class="eyebrow">Teknik</div><h2 style="margin-top:14px">Ringan,<br>tanpa beban.</h2></div>
+  <section class="xp" id="pengalaman">
+    <div class="eyebrow">Experience</div>
+    <h2>Career so far</h2>
     <div>
-      <p>Sebagian besar sample dibuat dengan HTML, CSS, dan JavaScript murni sehingga cepat dibuka di perangkat apa pun. Animasi menghormati pengaturan "kurangi gerakan" pada perangkat pengguna.</p>
-      <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>SVG</span><span>Canvas 2D</span><span>WebGL</span><span>GSAP</span></div>
+      <div class="xr"><div class="d">2025 – Present</div><h4>Graphic Designer<span>Askrindo Insurance</span></h4><ul>
+        <li>Design visual content such as social media posts, posters, banners, and presentations using Canva.</li>
+        <li>Use generative AI tools (Claude, ChatGPT, and others) to brainstorm concepts, draft copywriting, and generate visual ideas, significantly speeding up the design workflow.</li>
+        <li>Use NotebookLM to research and summarize briefs and references into clear creative direction.</li>
+        <li>Maintain consistency with the company's brand identity and deliver revisions on time.</li></ul></div>
+      <div class="xr"><div class="d">Dec 2024 – Feb 2025</div><h4>Business Process Management Intern<span>Askrindo Insurance</span></h4><ul>
+        <li>Assisted the Operations Division in producing internal company videos.</li>
+        <li>Mapped and documented the business processes of each division using flowcharts.</li></ul></div>
+      <div class="xr"><div class="d">Jun – Aug 2023</div><h4>IT Support Intern<span>LSP-PM</span></h4><ul>
+        <li>Maintained the company website, uploaded content, and handled maintenance of office equipment such as printers and scanners.</li></ul></div>
+      <div class="xr"><div class="d">Jan 2022 – Jan 2023</div><h4>Operations Staff<span>PT Jaya Makmur Selaras</span></h4><ul>
+        <li>Carried out daily operational tasks in line with company procedures and standards, including order processing, delivery arrangements, and equipment maintenance.</li>
+        <li>Monitored incoming and outgoing stock, recorded inventory changes, and ensured the availability of products and materials for smooth operations.</li></ul></div>
     </div>
   </section>
 
-  <div class="marq"><div id="mq"><span class="f">Motion</span><span>Design</span><span class="f">Devi Andreny</span><span>2026</span><span class="f">Motion</span><span>Design</span><span class="f">Devi Andreny</span><span>2026</span></div></div>
+  <section class="sk">
+    <div class="eyebrow">Skills &amp; Education</div>
+    <h2>What I work with</h2>
+    <div>
+      <div class="sg"><h5>Design</h5><div class="chips"><span>UI/UX Design (Web &amp; Mobile)</span><span>Graphic Design</span><span>Figma</span><span>Canva</span></div></div>
+      <div class="sg"><h5>AI Tools</h5><div class="chips"><span>Claude</span><span>ChatGPT</span><span>NotebookLM</span></div></div>
+      <div class="sg"><h5>Technical</h5><div class="chips"><span>HTML</span><span>CSS</span><span>Laravel</span><span>Microsoft Office</span></div></div>
+      <div class="sg"><h5>Soft Skills</h5><div class="chips"><span>Communication</span><span>Teamwork</span><span>Leadership</span><span>Critical thinking</span><span>Time management</span></div></div>
+      <div class="sg"><h5>Languages</h5><div class="chips"><span>Indonesian (native)</span><span>English (intermediate)</span></div></div>
+      <div class="sg"><h5>Education</h5><div class="chips"><span>Bachelor of Informatics Engineering · Gunadarma University · 2019 – 2024</span></div></div>
+    </div>
+  </section>
+
+  <div class="marq"><div id="mq"><span class="f">Graphic Design</span><span>UI/UX</span><span class="f">Portofolio</span><span>2026</span><span class="f">Graphic Design</span><span>UI/UX</span><span class="f">Portofolio</span><span>2026</span></div></div>
 </main>
 
 <footer id="kontak">
   <div>
-    <div class="eyebrow" style="margin-bottom:3vh">Kontak</div>
-    <h2>Mari <em>bergerak</em><br>bersama.</h2>
+    <div class="eyebrow" style="margin-bottom:3vh">Contact</div>
+    <h2>Let's <em>collaborate</em>.</h2>
     <div class="btns">
-      <!-- GANTI href di bawah dengan alamat LinkedIn Anda -->
-      <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener" id="mag">LinkedIn <span>↗</span></a>
-      <a class="btn o" href="samples.html">Galeri lengkap <span>→</span></a>
+      <a class="btn" href="mailto:deviandreny@gmail.com" id="mag">Email <span>↗</span></a>
+      <a class="btn o" href="https://www.linkedin.com/in/devi-andreny-354ba828b/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+      <a class="btn o" href="https://www.instagram.com/depiiandreani10" target="_blank" rel="noopener">Instagram <span>↗</span></a>
     </div>
   </div>
-  <div class="foot"><span>© 2026 Devi Andreny</span><span>Sample konsep bertema Askrindo, bukan materi resmi perusahaan.</span></div>
+  <div class="foot"><span>© 2026 Portofolio · Bekasi, Indonesia</span><span>deviandreny@gmail.com</span></div>
 </footer>
-
-<div id="modal"><div class="box"><button id="close">Tutup ✕</button><iframe id="mframe" title="Pratinjau karya"></iframe></div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -218,7 +248,7 @@ try{
   g.setAttribute('aRand',new THREE.BufferAttribute(rnd,1));
   uniforms={uTime:{value:0},uMorph:{value:0},uMouse:{value:new THREE.Vector2(99,99)},uPx:{value:renderer.getPixelRatio()}};
   points=new THREE.Points(g,new THREE.ShaderMaterial({
-    uniforms,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+    uniforms,transparent:true,depthWrite:false,blending:THREE.NormalBlending,
     vertexShader:`attribute vec3 aTarget;attribute float aRand;uniform float uTime,uMorph,uPx;uniform vec2 uMouse;varying float vMix;varying float vA;
       void main(){vec3 p=mix(position,aTarget,uMorph);float tt=uTime*.6+aRand*6.28;
         p+=.09*vec3(sin(p.y*2.6+tt),cos(p.x*2.6+tt),sin(p.z*2.6+tt*.8));p.y+=sin(p.x*.9+uTime*.7)*.25*uMorph;
@@ -227,7 +257,7 @@ try{
         gl_Position=projectionMatrix*mv;gl_PointSize=uPx*(1.4+2.2*aRand+f*3.)*(5./-mv.z);}`,
     fragmentShader:`varying float vMix;varying float vA;
       void main(){vec2 c=gl_PointCoord-.5;float d=length(c);if(d>.5)discard;float a=smoothstep(.5,0.,d)*vA;
-        vec3 blue=mix(vec3(.12,.36,.85),vec3(.5,.7,1.),vA);gl_FragColor=vec4(mix(blue,vec3(.95,.44,.13),vMix),a*.9);}`
+        vec3 blue=mix(vec3(.07),vec3(.5),vA);gl_FragColor=vec4(mix(blue,vec3(.894,.341,.18),vMix),a*.95);}`
   }));
   scene.add(points);
 }catch(e){glOK=false;canvas.style.display='none'}
@@ -268,46 +298,35 @@ function hoverCursor(el,label){
   el.addEventListener('pointerleave',()=>{cur.classList.remove('big');cur.dataset.t=''});
 }
 
-/* kartu karya */
+/* ===== WORK — FILL IN HERE =====
+   To fill in a project, edit its line below:
+   t = title, d = short description, g = category/tools, y = year,
+   img = image path (e.g. 'work/01.jpg'), href = link when clicked (optional).
+   Leave img empty ('') to show the "Work goes here" placeholder. */
 const works=[
-  {k:'text',t:'Text Reveal',d:'Judul muncul baris demi baris dengan masking.',g:'CSS'},
-  {k:'kpi',t:'Animated KPI',d:'Angka naik dan bar terisi bersamaan.',g:'JavaScript'},
-  {k:'net',t:'Network Particles',d:'Jaringan titik yang bereaksi pada kursor.',g:'Canvas'},
-  {k:'chart',t:'Line Chart Draw',d:'Garis tren tergambar mulus.',g:'SVG'},
-  {k:'cards',t:'Tilt Cards',d:'Kartu 3D yang mengikuti kursor.',g:'CSS 3D'},
-  {k:'tl',t:'Roadmap Timeline',d:'Garis waktu 2026 terisi bertahap.',g:'CSS'},
+  {t:'Project title 01',d:'Short project description.',g:'Category',y:'',img:'',href:''},
+  {t:'Project title 02',d:'Short project description.',g:'Category',y:'',img:'',href:''},
+  {t:'Project title 03',d:'Short project description.',g:'Category',y:'',img:'',href:''},
+  {t:'Project title 04',d:'Short project description.',g:'Category',y:'',img:'',href:''},
+  {t:'Project title 05',d:'Short project description.',g:'Category',y:'',img:'',href:''},
+  {t:'Project title 06',d:'Short project description.',g:'Category',y:'',img:'',href:''},
 ];
 const track=$('#track');
 works.forEach((w,i)=>{
-  const a=document.createElement('a');a.className='card';a.href='samples.html?film='+w.k+'&auto=1';
-  a.innerHTML=`<div class="pv" data-k="${w.k}"></div><div class="cap"><div><h3>0${i+1} · ${w.t}</h3><p>${w.d}</p></div><small>${w.g}</small></div>`;
-  track.appendChild(a);
-  a.addEventListener('click',e=>{e.preventDefault();openModal(w.k)});
-  hoverCursor(a,'BUKA');
+  const el=document.createElement(w.href?'a':'div');el.className='card'+(w.href?' link':'');
+  if(w.href){el.href=w.href;el.target='_blank';el.rel='noopener';}
+  const n=String(i+1).padStart(2,'0');
+  el.innerHTML=`<div class="pv">${w.img?`<img src="${w.img}" alt="${w.t}" loading="lazy">`:`<div class="ph"><b>${n}</b>Work goes here</div>`}</div>
+    <div class="cap"><div><h3>${n} · ${w.t}</h3><p>${w.d}</p></div><small>${[w.g,w.y].filter(Boolean).join(' · ')}</small></div>`;
+  track.appendChild(el);
+  if(w.href)hoverCursor(el,'OPEN');
 });
-const more=document.createElement('a');more.className='card more';more.href='samples.html';
-more.innerHTML='<div class="pv">Lihat galeri lengkap →</div><div class="cap"><div><h3>Semua sample</h3><p>Versi interaktif dengan tombol ulang.</p></div></div>';
-track.appendChild(more);hoverCursor(more,'LIHAT');
-
-// iframe pratinjau dimuat bertahap agar ringan
-const ioPv=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;ioPv.unobserve(e.target);
-  const f=document.createElement('iframe');f.loading='lazy';f.title='Pratinjau';
-  f.src='samples.html?film='+e.target.dataset.k+'&auto=6&nocap=1';
-  f.onload=()=>f.classList.add('on');e.target.appendChild(f);
-}),{rootMargin:'0px 600px 0px 600px'});
-document.querySelectorAll('.pv[data-k]').forEach(p=>ioPv.observe(p));
-
-/* modal */
-const modal=$('#modal'),mf=$('#mframe');
-function openModal(k){mf.src='samples.html?film='+k+'&auto=8';modal.classList.add('open');document.body.classList.add('lock');lenis&&lenis.stop();}
-function closeModal(){modal.classList.remove('open');document.body.classList.remove('lock');mf.src='about:blank';lenis&&lenis.start();}
-$('#close').addEventListener('click',closeModal);
-modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+const more=document.createElement('a');more.className='card more link';more.href='samples.html';
+more.innerHTML='<div class="pv">Motion experiments →</div><div class="cap"><div><h3>Motion samples</h3><p>Six web animation experiments.</p></div></div>';
+track.appendChild(more);hoverCursor(more,'VIEW');
 
 /* pernyataan */
-const stmt=$('#stmt'),hl=['Gerak','bukan','hiasan.','pesan','diingat.'];
+const stmt=$('#stmt'),hl=['Graphic','Designer','functional','appealing','AI'];
 stmt.innerHTML=stmt.textContent.trim().split(/\s+/).map(w=>`<span class="w${hl.includes(w)?' hl':''}">${w}</span>`).join(' ');
 gsap.to('#stmt .w',{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:'#stmt',start:'top 75%',end:'bottom 45%',scrub:true}});
 
@@ -325,10 +344,11 @@ ScrollTrigger.matchMedia({
 });
 
 /* reveal */
-document.querySelectorAll('.work h2,.tools h2,.tools p,.chips,footer h2,.eyebrow').forEach(el=>{
+document.querySelectorAll('.work h2,.xp h2,.sk h2,footer h2,.eyebrow').forEach(el=>{
   if(el.closest('.hero')||el.closest('#loader'))return;
   gsap.from(el,{y:50,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}});
 });
+gsap.utils.toArray('.xr,.sg').forEach(r=>gsap.from(r,{opacity:0,y:40,duration:.9,ease:'power3.out',scrollTrigger:{trigger:r,start:'top 90%'}}));
 gsap.to('#mq',{xPercent:-50,ease:'none',scrollTrigger:{trigger:'.marq',start:'top bottom',end:'bottom top',scrub:true}});
 
 /* loader → hero */
