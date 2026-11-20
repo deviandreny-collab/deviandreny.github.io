@@ -51,6 +51,11 @@ section{position:relative}
 @keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 .statement{padding:26vh var(--pad);min-height:100svh;display:flex;align-items:center}
+.stmt-in{display:grid;grid-template-columns:1.45fr 1fr;gap:clamp(30px,6vw,96px);align-items:center;width:100%}
+.me{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:linear-gradient(165deg,#1F5239,#153828);border:1px solid rgba(232,168,74,.28);margin:0;max-width:520px;justify-self:end;width:100%}
+.me .disc{position:absolute;width:86%;aspect-ratio:1;left:7%;top:9%;border-radius:50%;background:radial-gradient(circle at 50% 35%,#F2BD6A,#E8A84A 55%,#D9724A)}
+.me img{position:absolute;left:0;bottom:0;width:100%;height:auto;display:block}
+@media(max-width:860px){.stmt-in{grid-template-columns:1fr}.me{justify-self:start;max-width:420px}}
 .statement p{font-size:clamp(20px,2.5vw,36px);line-height:1.45;letter-spacing:-.015em;font-weight:400;max-width:960px}
 .statement .w{opacity:.14;display:inline-block}
 .statement .w.hl{color:var(--terra)}
@@ -141,7 +146,10 @@ footer h2 em{font-style:normal;color:var(--terra)}
   </section>
 
   <section class="statement" id="tentang">
-    <p id="stmt">I'm a Graphic Designer and Informatics Engineering graduate. I combine business needs with an understanding of user behavior to create functional and visually appealing designs, using AI to work faster.</p>
+    <div class="stmt-in">
+      <p id="stmt">I'm a Graphic Designer and Informatics Engineering graduate. I combine business needs with an understanding of user behavior to create functional and visually appealing designs, using AI to work faster.</p>
+      <figure class="me" id="me"><div class="disc"></div><img src="foto-devi.webp" alt="Devi Andreny" width="740" height="930" loading="lazy"></figure>
+    </div>
   </section>
 
   <section class="work" id="karya">
@@ -328,6 +336,8 @@ track.appendChild(more);hoverCursor(more,'VIEW');
 /* pernyataan */
 const stmt=$('#stmt'),hl=['Graphic','Designer','functional','appealing','AI'];
 stmt.innerHTML=stmt.textContent.trim().split(/\s+/).map(w=>`<span class="w${hl.includes(w)?' hl':''}">${w}</span>`).join(' ');
+gsap.from('#me',{clipPath:'inset(100% 0 0 0)',duration:1.3,ease:'power4.out',scrollTrigger:{trigger:'#me',start:'top 85%'}});
+gsap.from('#me img',{scale:1.15,yPercent:6,duration:1.6,ease:'power3.out',scrollTrigger:{trigger:'#me',start:'top 85%'}});
 gsap.to('#stmt .w',{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:'#stmt',start:'top 75%',end:'bottom 45%',scrub:true}});
 
 /* karya horizontal */
